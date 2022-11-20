@@ -4,13 +4,38 @@
 <title>Penilaian Harian X MIPA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+    
+  body {
+      overflow: visible;
+  }
+  
+  iframe {
+  
+  height: 800px;
+  width: 100%;
+  border: 0px;
+  padding-top: 8px;
+  margin: 0px
+  }
+  
+  #timer {
+  background-color: #FF0000;
+  color: #FFFFFF;
+  font-family: arial;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 50px;
+  }
+  
+</style>
 </head>
 <body>
   
 
   
-    <div id="timer" align="center"><a class="fa fa-book"></a> PH 2 Matematika Peminatan || Waktu Tersisa  <a class="fa fa-clock-o"></a> <span id="time"></span></div>
-  
+  <div id="timer" align="center"><a class="fa fa-book"></a> PH 2 Matematika Peminatan || Waktu Tersisa  <a class="fa fa-clock-o"></a> <span id="time"></span></div>
+  <p id="demo"></p>
   <span id="form">
   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJVMrHRPexRGIV0RSENSh0zxtk0tCUpRIqde_0T5e137Njag/viewform?usp=sf_link">Tunggu yaa</iframe><br />
   </span>
@@ -51,37 +76,37 @@
   };
   
   </script>
-  
-  <style type="text/css">
+  <script>
+    // Mengatur waktu akhir perhitungan mundur
+    var countDownDate = new Date("Dec 5, 2019 15:37:25").getTime();
     
-  body {
-      overflow: visible;
-  }
+    // Memperbarui hitungan mundur setiap 1 detik
+    var x = setInterval(function() {
+    
+      // Untuk mendapatkan tanggal dan waktu hari ini
+      var now = new Date().getTime();
+        
+      // Temukan jarak antara sekarang dan tanggal hitung mundur
+      var distance = countDownDate - now;
+        
+      // Perhitungan waktu untuk hari, jam, menit dan detik
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+      // Keluarkan hasil dalam elemen dengan id = "demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+        
+      // Jika hitungan mundur selesai, tulis beberapa teks 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+    </script>
   
-  iframe {
-  
-  height: 600px;
-  width: 100%;
-  border: 0px;
-  padding-top: 8px;
-  margin: 0px
-  }
-  
-  #timer {
-  background-color: #FF0000;
-  color: #FFFFFF;
-  font-family: arial;
-  font-weight: bold;
-  padding: 10px 30px;
-  border-radius: 50px;
-  }
-  
-  </style>
-  
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-<a href="/xmipa.html">Kelas X MIPA</a>
 
-<a href="/ximipa.html">Kelas XI MIPA</a>
 </body>
 </html>
