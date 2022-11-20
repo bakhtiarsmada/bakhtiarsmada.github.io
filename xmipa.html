@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Penilaian Harian X MIPA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  
+
+  
+    <div id="timer" align="center"><a class="fa fa-book"></a> PH 2 Matematika Peminatan || Waktu Tersisa  <a class="fa fa-clock-o"></a> <span id="time"></span></div>
+  
+  <span id="form">
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJVMrHRPexRGIV0RSENSh0zxtk0tCUpRIqde_0T5e137Njag/viewform?usp=sf_link">Tunggu yaa</iframe><br />
+  </span>
+
+  
+  <script>
+  
+  function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      var batas = timer + 60*2 ;
+      setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+  
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+          display.textContent = minutes + ":" + seconds + " Menit";
+  
+          if (--timer < 0) {
+  
+             document.getElementById("timer").innerHTML = "Waktu Habis, kamu punya waktu 1 menit untuk submit agar jawaban terekam";
+          }
+      if (--batas < 0) {
+  
+             document.getElementById("form").style.visibility = "hidden";
+             document.getElementById("timer").style.visibility = "hidden";
+          }
+  
+      }, 1000);
+  }
+  
+  window.onload = function () {
+      var fiveMinutes = 60 * 120,
+          display = document.querySelector('#time');
+      startTimer(fiveMinutes, display);
+  
+  };
+  
+  </script>
+  
+  <style type="text/css">
+    
+  body {
+      overflow: visible;
+  }
+  
+  iframe {
+  
+  height: 600px;
+  width: 100%;
+  border: 0px;
+  padding-top: 8px;
+  margin: 0px
+  }
+  
+  #timer {
+  background-color: #FF0000;
+  color: #FFFFFF;
+  font-family: arial;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 50px;
+  }
+  
+  </style>
+  
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+<a href="/xmipa.html">Kelas X MIPA</a>
+
+<a href="/ximipa.html">Kelas XI MIPA</a>
+</body>
+</html>
