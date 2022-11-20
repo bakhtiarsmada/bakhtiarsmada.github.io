@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Penilaian Harian X MIPA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style type="text/css">
+    
+  body {
+      overflow: visible;
+  }
+  
+  iframe {
+  
+  height: 800px;
+  width: 100%;
+  border: 0px;
+  padding-top: 8px;
+  margin: 0px
+  }
+  
+  #timer {
+  background-color: #FF0000;
+  color: #FFFFFF;
+  font-family: arial;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 0px;
+  }
+  
+</style>
+</head>
+<body>
+  
+
+  
+  <div id="timer" class="alert text-center"><i class="fa fa-book"></i> PH 2 Matematika Peminatan <br> Waktu Tersisa  <i class="fa fa-clock-o"></i> <span id="time"></span><br>Submit sebelum waktu habis agar jawaban terekam</div>
+  <div id='info'>
+    <div class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://smadawates.sch.id/media_library/images/d8e5dfe5085097c32b7fbc96cd3c46ac.png" alt="" width="72">
+      <h1 class="display-5 fw-bold">Penilaian Harian<br>Matematika Peminatan<br>Kelas X MIPA 2</h1>
+      <div class="col-lg-6 mx-auto">
+        <h3 class="text-danger" id="timeujian"></h3>
+        <p class="lead mb-4">Ujian dimulai pada Senin, 21 November 2022 Pukul 08.00 sampai 10.00.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="https://www.sinmat.my.id" _target="blank" class="btn btn-primary btn-lg px-4 gap-3">Belajar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span id="form">
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJVMrHRPexRGIV0RSENSh0zxtk0tCUpRIqde_0T5e137Njag/viewform?usp=sf_link">Tunggu yaa</iframe><br />
+  </span>
+
+  <script>
+    // Mengatur waktu akhir perhitungan mundur
+    var starUjian = new Date("Nov 21, 2022 08:00:00").getTime();
+    var endUjian = new Date("Nov 21, 2022 10:00:00").getTime();
+    
+    // Memperbarui hitungan mundur setiap 1 detik
+    var x = setInterval(function() {
+    
+      // Untuk mendapatkan tanggal dan waktu hari ini
+      var now = new Date().getTime();
+        
+      // Temukan jarak antara sekarang dan tanggal hitung mundur
+      var distance = starUjian - now;
+      var distance2 = endUjian - now;
+        
+      // Perhitungan waktu untuk hari, jam, menit dan detik
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      var daysUjian = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+      var hoursUjian = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutesUjian = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+      var secondsUjian = Math.floor((distance2 % (1000 * 60)) / 1000);
+        
+      // Keluarkan hasil dalam elemen dengan id = "demo"
+      document.getElementById("timeujian").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+      document.getElementById("time").innerHTML =  + hoursUjian + "h : "
+      + minutesUjian + "m : " + secondsUjian + "s ";
+      if (distance < 0 && distance2 > 0){
+        document.getElementById("info").setAttribute("hidden", 'true');
+        document.getElementById("form").removeAttribute("hidden", 'false');
+        document.getElementById("timer").removeAttribute("hidden", 'false');
+      }else if( distance > 0 && distance2 > 0){
+        document.getElementById("timer").setAttribute("hidden", 'true');
+        document.getElementById("form").setAttribute("hidden", 'true');
+        document.getElementById("info").removeAttribute("hidden", 'false');
+      }else if(distance < 0 && distance2 < 0){
+        
+        document.getElementById("timer").removeAttribute("hidden", 'true');
+        document.getElementById("timeujian").innerHTML="Ujian Telah Selesai";
+        document.getElementById("info").removeAttribute("hidden", 'false');
+        document.getElementById("timer").setAttribute("hidden", 'true');
+        document.getElementById("form").setAttribute("hidden", 'true');
+        clearInterval(x);
+      }
+    }, 1000);
+
+
+
+    </script>
+  
+
+</body>
+</html>
